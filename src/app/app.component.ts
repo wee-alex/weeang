@@ -18,7 +18,16 @@ export class AppComponent {
     }
 
     logout() {
-        this.authenticationService.logout();
-        this.router.navigate(['/login']);
+        // this.authenticationService.logout();
+        console.log(5)
+        this.authenticationService.logout().subscribe(
+            data => {
+                this.authenticationService.unsetCurrentUser();
+                this.router.navigate(['/login']);
+                console.log(9);
+
+            }
+        );
+        
     }
 }

@@ -1,7 +1,7 @@
 ﻿import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS, HttpClientXsrfModule } from '@angular/common/http';
 
 // used to create fake backend
 import { fakeBackendProvider } from './_helpers';
@@ -20,6 +20,10 @@ import { AlertComponent } from './_components';
         BrowserModule,
         ReactiveFormsModule,
         HttpClientModule,
+        HttpClientXsrfModule.withOptions({
+            cookieName: 'csrftoken',
+            headerName: 'X-CSRFTOKEN'
+          }),
         appRoutingModule
     ],
     declarations: [
